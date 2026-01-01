@@ -119,6 +119,9 @@ class LogProcessor(DataProcessor):
 
 
 def test_numeric(datas: Dict) -> None:
+    '''
+    Test the NumericProcessor class
+    '''
     data = datas["numeric"]
     print("Initializing Numeric Processor...")
     obj = NumericProcessor(data)
@@ -136,6 +139,9 @@ def test_numeric(datas: Dict) -> None:
 
 
 def test_text(datas: Dict) -> None:
+    '''
+    Test the TextProcessor class
+    '''
     data = datas["text"]
     print("Initializing Text Processor...")
     obj = TextProcessor(data)
@@ -153,6 +159,9 @@ def test_text(datas: Dict) -> None:
 
 
 def test_log(datas: Dict) -> None:
+    '''
+    Test the LogProcessor class
+    '''
     data = datas["log"]
     print("Initializing Log Processor...")
     obj = LogProcessor(data)
@@ -170,6 +179,9 @@ def test_log(datas: Dict) -> None:
 
 
 def test_all(datas: Dict) -> None:
+    '''
+    Test the all the Processor classes
+    '''
     print("=== Polymorphic Processing Demo ===")
     print("Processing multiple data types through same interface...")
 

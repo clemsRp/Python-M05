@@ -187,6 +187,9 @@ class StreamProcessor:
 
 def test_sensor(batches: List[Any], criteria: List[Any],
                 sensor_id: str) -> None:
+    '''
+    Test the SensorStream class
+    '''
     print("Initializing Sensor Stream...")
     sensor = SensorStream(sensor_id)
     print(sensor.get_info("Environmental Data"))
@@ -203,6 +206,9 @@ def test_sensor(batches: List[Any], criteria: List[Any],
 
 def test_transaction(batches: List[Any], criteria: List[Any],
                      trans_id: str) -> None:
+    '''
+    Test the TransactionStream class
+    '''
     print("Initializing Transaction Stream...")
     transaction = TransactionStream(trans_id)
     print(transaction.get_info("Financial Data"))
@@ -219,6 +225,9 @@ def test_transaction(batches: List[Any], criteria: List[Any],
 
 def test_event(batches: List[Any], criteria: List[Any],
                event_id: str) -> None:
+    '''
+    Test the EventStream class
+    '''
     print("Initializing Event Stream...")
     event = EventStream(event_id)
     print(event.get_info("System Events"))
@@ -234,6 +243,9 @@ def test_event(batches: List[Any], criteria: List[Any],
 
 def test_all_streams(batches: List[Any], criteria: List[Any],
                      streams_ids: List[str]) -> None:
+    '''
+    Test the StreamProcessor class
+    '''
     sensor = SensorStream(streams_ids[0])
     transaction = TransactionStream(streams_ids[1])
     event = EventStream(streams_ids[2])
