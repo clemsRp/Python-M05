@@ -5,26 +5,41 @@ from typing import Any, List, Dict, Union, Optional
 
 
 class DataProcessor(ABC):
+    '''
+    Base abstract class for processors
+    '''
 
-    def __init__(self, data: Optional[Any]):
+    def __init__(self, data: Optional[Any]) -> None:
         self.data = data
 
     @abstractmethod
     def process(self, data: Any) -> str:
+        '''
+        Process and analyse data
+        '''
         pass
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
+        '''
+        Check that the data is valid
+        '''
         pass
 
     @abstractmethod
     def format_output(self, result: str) -> str:
+        '''
+        Format the result string of the process
+        '''
         pass
 
 
 class NumericProcessor(DataProcessor):
+    '''
+    Simulate a numeric processor
+    '''
 
-    def __init__(self, data: Optional[List[Union[int, str]]] = None):
+    def __init__(self, data: Optional[List[Union[int, str]]] = None) -> None:
         super().__init__(data)
 
     def process(self, data: Any) -> str:
@@ -51,6 +66,9 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
+    '''
+    Simulate a text processor
+    '''
 
     def __init__(self, data: Optional[List[Union[int, str]]] = None):
         super().__init__(data)
@@ -82,6 +100,9 @@ class TextProcessor(DataProcessor):
 
 
 def get_type_index(data: str) -> int:
+    '''
+    Return the index of the end of the log processor type in the string data
+    '''
     i = 1
     while data[i].isupper():
         i += 1
@@ -89,6 +110,9 @@ def get_type_index(data: str) -> int:
 
 
 class LogProcessor(DataProcessor):
+    '''
+    Simulate a log processor
+    '''
 
     def __init__(self, data: Optional[List[Union[int, str]]] = None):
         super().__init__(data)

@@ -5,34 +5,55 @@ from typing import Any, List, Dict, Union, Optional
 
 
 class DataStream(ABC):
+    '''
+    Base abstract class for streams
+    '''
 
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         self.stream_id = stream_id
         self.nb_processed = 0
 
     @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
+        '''
+        Process the batch's data
+        '''
         pass
 
     @abstractmethod
     def get_analysis(self, new_batch: List[Any]) -> str:
+        '''
+        Return the analysis of the batch
+        '''
         pass
 
     def filter_data(self, data_batch: List[Any],
                     criteria: Optional[str] = None) -> List[Any]:
+        '''
+        Return the filtered data of the batch
+        '''
         return data_batch
 
     def get_stats(self) -> Dict[str, Union[str, int, float]]:
+        '''
+        Return the stream id and the number of data processed
+        '''
         return {
             "stream_id": self.stream_id,
             "nb_processed": self.nb_processed
         }
 
     def get_info(self, stream_type: str) -> str:
+        '''
+        Return some information about the stream
+        '''
         return f"Stream ID: {self.stream_id}, Type: " + stream_type
 
 
 class SensorStream(DataStream):
+    '''
+    Simulate a sensor stream
+    '''
 
     def process_batch(self, data_batch: List[Any]) -> str:
         res = "["
@@ -80,6 +101,9 @@ class SensorStream(DataStream):
 
 
 class TransactionStream(DataStream):
+    '''
+    Simulate a transaction stream
+    '''
 
     def process_batch(self, data_batch: List[Any]) -> str:
         res = "["
@@ -126,6 +150,9 @@ class TransactionStream(DataStream):
 
 
 class EventStream(DataStream):
+    '''
+    Simulate an event stream
+    '''
 
     def process_batch(self, data_batch: List[Any]) -> str:
         self.nb_processed += len(data_batch)
@@ -153,14 +180,23 @@ class EventStream(DataStream):
 
 
 class StreamProcessor:
+    '''
+    Simulate a stream manager processing all the streams
+    '''
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.streams = []
 
-    def add_stream(self, stream: DataStream):
+    def add_stream(self, stream: DataStream) -> None:
+        '''
+        Add a stream to the stream list
+        '''
         self.streams.append(stream)
 
-    def process_all(self, batches: List[Any], criteria: List[Any]):
+    def process_all(self, batches: List[Any], criteria: List[Any]) -> None:
+        '''
+        Process all the streams and display some informations
+        '''
         print("Batch 1 Results:")
 
         for stream in self.streams:
