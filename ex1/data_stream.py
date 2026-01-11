@@ -144,7 +144,7 @@ class TransactionStream(DataStream):
             else:
                 net -= batch[batch_type]
 
-        res += f" net flow: {"+" if net >= 0 else ""}{net} units"
+        res += " net flow: " + '+' if net >= 0 else '' + net + " units"
 
         return res
 
@@ -174,7 +174,7 @@ class EventStream(DataStream):
             if batch == "error":
                 nb_error += 1
 
-        res += f" {nb_error} error{"s" if nb_error > 1 else ""} detected"
+        res += f" {nb_error} error" + "s" if nb_error > 1 else "" + " detected"
 
         return res
 
@@ -215,8 +215,8 @@ class StreamProcessor:
 
             stats = stream.get_stats()
 
-            print(f"- {stream_type} data: {stats["nb_processed"]} "
-                  f"{process_type} processed")
+            print(f"- {stream_type} data: " + str(stats["nb_processed"]) +
+                  f" {process_type} processed")
 
         print()
 
