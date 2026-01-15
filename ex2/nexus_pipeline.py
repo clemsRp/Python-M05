@@ -339,7 +339,7 @@ if __name__ == "__main__":
     nexus_manager.chain_pipelines(
         ["Pipeline A", "Pipeline B", "Pipeline C"], {"test": "data"}
     )
-    print("Data flow: Raw -> Processed -> Analyzed -> Stored")
+    print("Data flow: Raw -> Processed -> Analyzed -> Stored\n")
     print("Chain result: 100 records processed through 3-stage pipeline")
     print("Performance: 95% efficiency, 0.2s total processing time\n")
 
