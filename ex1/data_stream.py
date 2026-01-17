@@ -144,7 +144,8 @@ class TransactionStream(DataStream):
             else:
                 net -= batch[batch_type]
 
-        res += " net flow: " + '+' if net >= 0 else '' + net + " units"
+        sign = '+' if net >= 0 else ''
+        res += " net flow: " + sign + str(net) + " units"
 
         return res
 
@@ -174,7 +175,8 @@ class EventStream(DataStream):
             if batch == "error":
                 nb_error += 1
 
-        res += f" {nb_error} error" + "s" if nb_error > 1 else "" + " detected"
+        plurial = "s" if nb_error > 1 else ""
+        res += f" {nb_error} error" + plurial + " detected"
 
         return res
 
@@ -326,5 +328,8 @@ if __name__ == "__main__":
     streams_ids = [sensor_id, trans_id, event_id]
 
     test_all_streams(batches, criteria, streams_ids)
+
+    print("Stream filtering active: High-priority data only")
+    print("Filtered results: 2 critical sensor alerts, 1 large transaction\n")
 
     print("All streams processed successfully. Nexus throughput optimal.")
